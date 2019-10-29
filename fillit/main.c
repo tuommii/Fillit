@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 15:04:07 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/10/29 16:31:46 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/10/29 16:39:30 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@
 
 void handle_line(const char *line)
 {
+	// This is allowed
 	static int count = 0;
+
 	count++;
+	// Something like this with newlines between tetrises noticed??
+	if ((count % SIZE) == 0)
+		printf("%d", count);
 }
 
 int main(int argc, const char **argv)
