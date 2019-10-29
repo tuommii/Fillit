@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 15:04:07 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/10/29 16:07:30 by mtuomine         ###   ########.fr       */
+/*   Created: 2019/10/29 16:04:21 by mtuomine          #+#    #+#             */
+/*   Updated: 2019/10/29 16:06:11 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// TODO: Remove this
-#include <stdio.h>
-#include "libft.h"
+#ifndef FILLIT_H
+# define FILLIT_H
 
-int main(int argc, const char **argv)
-{
-	char **line;
+// Whatever u wanna use
+#define ROWS 4
+#define COLS 4
+#define SIZE 4
 
-	if (argc != 2)
-		return (0);
-
-	get_next_line();
-	ft_putstr("Hello!");
-	return (0);
-}
+#endif

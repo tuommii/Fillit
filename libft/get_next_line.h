@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 15:04:07 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/10/29 16:07:30 by mtuomine         ###   ########.fr       */
+/*   Created: 2019/10/20 09:46:57 by mtuomine          #+#    #+#             */
+/*   Updated: 2019/10/24 11:43:50 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// TODO: Remove this
-#include <stdio.h>
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int main(int argc, const char **argv)
-{
-	char **line;
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include "libft.h"
 
-	if (argc != 2)
-		return (0);
+# define BUFF_SIZE 100
+# define MAX_FD 4096 + 1
 
-	get_next_line();
-	ft_putstr("Hello!");
-	return (0);
-}
+int		get_next_line(const int fd, char **line);
+
+#endif
