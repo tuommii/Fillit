@@ -6,45 +6,47 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 15:04:07 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/10/29 16:39:30 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/10/30 09:32:08 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // TODO: Remove this
 #include <stdio.h>
 #include <fcntl.h>
+#include <unistd.h>
 #include "get_next_line.h"
 #include "libft.h"
 #include "fillit.h"
 
 
-void handle_line(const char *line)
+t_list	*read_tetris_file(int fd)
 {
-	// This is allowed
-	static int count = 0;
+	char *buf;
+	size_t bytes;
+	t_list *list;
 
-	count++;
-	// Something like this with newlines between tetrises noticed??
-	if ((count % SIZE) == 0)
-		printf("%d", count);
+	list = ft_lstnew(NULL, 0);
+	buf = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (buf == NULL)
+		return NULL;
+	while ((bytes = read(fd, buf, BUFFER_SIZE + 1)) > 0)
+	{
+		buf[BUFFER_SIZE] = '\0';
+		printf("%s", buf);
+
+	}
+	free(buf);
+	close(fd);
+	return list;
 }
 
 int main(int argc, const char **argv)
 {
-	char *line;
-	int fd;
-	int bytes;
+	t_list	*list;
 
 	if (argc != 2)
 		return (0);
 
-	fd = open(argv[1], O_RDONLY);
-	while ((bytes = get_next_line(fd, &line)) > 0)
-	{
-		handle_line(line);
-		//ft_putstr(line);
-		free(line);
-	}
-	close(fd);
+	list = read_tetris_file(open(argv[1], O_RDONLY));
 	return (0);
 }
