@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:04:21 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/10/30 09:31:35 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/10/30 10:20:58 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,11 @@
 # define SIZE 4
 
 # define BUFFER_SIZE 20
+
+typedef struct s_tetris
+{
+	char	*buffer;
+	int		test;
+} t_tetris;
 
 #endif
