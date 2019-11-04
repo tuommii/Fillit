@@ -3,17 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mdesta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/21 09:53:23 by phtruong          #+#    #+#             */
-/*   Updated: 2019/11/04 10:19:11 by mdesta           ###   ########.fr       */
+/*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
+/*   Updated: 2019/11/04 10:43:01 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include "../libft/libft.h"
+#include "../libft/libft.h"
+#include <unistd.h>
+#include <string.h>
+#include <fcntl.h>
+#include <stdlib.h>
 
 typedef struct		s_tetris
 {
@@ -21,6 +25,8 @@ typedef struct		s_tetris
 	char			c;
 	struct s_tetris	*next;
 }					t_tetris;
+
+int					readt(const int fd);
 
 # define USAGE "usage:\t./fillit source_file\n"
 
