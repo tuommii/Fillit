@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:25:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/04 12:15:43 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/04 14:02:37 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,28 +53,41 @@ static int get_blocks_and_validate_line(char *line)
 	return (counter);
 }
 
+static int is_tetrimino_valid(char *str)
+{
+	if (!str)
+		return (0);
+	return (1);
+}
+
 static int		read_tetrimino(const int fd, char *line)
 {
 	int n_line;
 	int total_blocks;
 	int blocks;
+	char *tetr;
 
 	n_line = 0;
 	total_blocks = 0;
 	blocks = 0;
+
+	if (!(tetr = ft_strnew(1)))
+		return (T_ERROR);
 	while (n_line < SIZE)
 	{
 		if (get_next_line(fd, &line))
 		{
-			ft_putendl(line);
+			//ft_putendl(line);
 			if ((blocks = get_blocks_and_validate_line(line)) == T_ERROR)
 				return (T_ERROR);
 			total_blocks += blocks;
+			tetr = ft_strjoin(tetr, line);
 		}
 		n_line++;
 	}
 	if (total_blocks != SIZE)
 		return (T_ERROR);
+	printf("%s", tetr);
 	return (1);
 }
 
