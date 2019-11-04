@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesta <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/04 10:43:01 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/04 10:58:11 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct		s_tetris
 	struct s_tetris	*next;
 }					t_tetris;
 
-int					readt(const int fd);
+int					read_file(const int fd);
 
 # define USAGE "usage:\t./fillit source_file\n"
 
