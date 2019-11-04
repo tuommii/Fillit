@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/04 11:09:37 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/04 12:10:28 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
-
+# define BLOCK '#'
+# define EMPTY '.'
+# define SIZE 4
+# define T_ERROR -1
 
 typedef struct		s_tetris
 {
@@ -31,5 +34,6 @@ typedef struct		s_tetris
 int					read_file(const int fd);
 
 # define USAGE "usage:\t./fillit source_file\n"
+# define ERROR_MSG "error\n"
 
 #endif
