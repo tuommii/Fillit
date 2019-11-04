@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:25:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/04 14:02:37 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/04 14:28:28 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,32 @@ static int get_blocks_and_validate_line(char *line)
 	return (counter);
 }
 
+/*
+** Valid tetriminos should have 6 or 8 connections
+*/
 static int is_tetrimino_valid(char *str)
 {
-	if (!str)
-		return (0);
-	return (1);
+	int connections;
+
+	connections = 0;
+	while (*str)
+	{
+		if (*str == BLOCK)
+		{
+			if (*(str - SIZE) && *(str - SIZE) == '#')
+				connections++;
+			if (*(str + SIZE) && *(str + SIZE) == '#')
+				connections++;
+			if (*(str - 1) && *(str - 1) == '#')
+				connections++;
+			if (*(str + 1) && *(str + 1) == '#')
+				connections++;
+		}
+		str++;
+	}
+	if (connections == 6 || connections == 8)
+		return (1);
+	return (0);
 }
 
 static int		read_tetrimino(const int fd, char *line)
@@ -70,24 +91,21 @@ static int		read_tetrimino(const int fd, char *line)
 	n_line = 0;
 	total_blocks = 0;
 	blocks = 0;
-
 	if (!(tetr = ft_strnew(1)))
 		return (T_ERROR);
-	while (n_line < SIZE)
+	while (n_line++ < SIZE)
 	{
 		if (get_next_line(fd, &line))
 		{
-			//ft_putendl(line);
 			if ((blocks = get_blocks_and_validate_line(line)) == T_ERROR)
 				return (T_ERROR);
 			total_blocks += blocks;
 			tetr = ft_strjoin(tetr, line);
 		}
-		n_line++;
 	}
 	if (total_blocks != SIZE)
 		return (T_ERROR);
-	printf("%s", tetr);
+	printf("%d", is_tetrimino_valid(tetr));
 	return (1);
 }
 
