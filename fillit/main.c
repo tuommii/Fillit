@@ -3,82 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mdesta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 15:04:07 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/04 09:04:43 by mtuomine         ###   ########.fr       */
+/*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
+/*   Updated: 2019/11/04 10:00:11 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// TODO: Remove this
-#include <stdio.h>
-#include <fcntl.h>
 #include <unistd.h>
-#include "get_next_line.h"
-#include "libft.h"
 #include "fillit.h"
 
 
-int validate_tetris(t_tetris tetris)
+int		main(int argc, char *argv[])
 {
-	int tetris_count;	// 1-26
-	int block_count;	// 4
-}
+	int	fd;
 
-t_tetris *create_tetris(char *str)
-{
-	t_tetris *tetris;
-
-	tetris = NULL;
-	tetris = ft_memalloc(sizeof(t_tetris));
-	tetris->buffer = ft_strdup(str);
-	tetris->test = 42;
-	return (tetris);
-}
-
-t_list	*read_tetris_file(int fd)
-{
-	char	*buf;
-	size_t	bytes;
-	t_list	*list;
-	t_tetris *tetris;
-
-	list = NULL;
-	if (!(buf = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1)))
-		return (NULL);
-	while ((bytes = read(fd, buf, BUFFER_SIZE + 1)) > 0)
-	{
-		buf[BUFFER_SIZE] = '\0';
-		//printf("%s:%zu\n", buf, bytes);
-		tetris = create_tetris(buf);
-		//printf("tetris:\n%s\n", tetris->buffer);
-		ft_lstadd(&list, ft_lstnew(tetris, sizeof(tetris)));
-	}
-	free(buf);
-	close(fd);
-	return (list);
-}
-
-void	print_node(t_list *node)
-{
-	t_tetris *tetris;
-
-	tetris = node->content;
-
-	printf("%s\n", tetris->buffer);
-}
-
-int main(int argc, const char **argv)
-{
-	t_list	*list;
-
+	fd = 0;
 	if (argc != 2)
-		return (0);
-
-	if (!(list = read_tetris_file(open(argv[1], O_RDONLY))))
-		return (0);
-
-	ft_lstiter(list, &print_node);
-
-	return (0);
+	{
+		ft_putstr(USAGE);
+		exit(1);
+	}
+	if (argc == 2)
+		fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		ft_exit();
+	else if (fd > 0)
+	{
+		if (pre_read(fd))
+		{
+			fd = open(argv[1], O_RDONLY);
+			solve_driver(fd);
+		}
+	}
+	close(fd);
 }
