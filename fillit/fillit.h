@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 16:04:21 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/04 08:43:37 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/04 09:02:59 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # define SIZE 4
 
 # define BUFFER_SIZE 20
+
+# define EMPTY	"."
+# define BLOCK 	"#"
+
 
 typedef struct s_tetris
 {

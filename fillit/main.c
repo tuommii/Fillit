@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 15:04:07 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/04 08:56:00 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/04 09:04:43 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 #include "libft.h"
 #include "fillit.h"
 
+
+int validate_tetris(t_tetris tetris)
+{
+	int tetris_count;	// 1-26
+	int block_count;	// 4
+}
 
 t_tetris *create_tetris(char *str)
 {
@@ -50,7 +56,7 @@ t_list	*read_tetris_file(int fd)
 	}
 	free(buf);
 	close(fd);
-	return list;
+	return (list);
 }
 
 void	print_node(t_list *node)
