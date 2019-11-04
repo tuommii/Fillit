@@ -6,7 +6,7 @@
 /*   By: mdesta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:25:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/04 10:00:58 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/04 10:12:25 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,17 @@ int		read_one(const int fd, char *line)
 	{
 		if (get_next_line(fd, &line))
 		{
-			ft_putendl(line);
-			
-			count += h_count(line);
-			if (ft_strlen(line) != 4 || count > 4 || !chk_char(line))
-				ft_exit();
-			free(line);
+			ft_putendl(line);		
+
 		}
 		n_line++;
 	}
 	if (count < 4)
-		ft_exit();
+		retunr(0);
 	return (1);
 }
 
-int		pre_read(const int fd)
+int		read(const int fd)
 {
 	char *line;
 
@@ -49,7 +45,7 @@ int		pre_read(const int fd)
 			break ;
 		free(line);
 		if (ft_strlen(line) != 0)
-			ft_exit();
+			return(0);
 	}
 	close(fd);
 	return (1);
