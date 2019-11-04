@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:25:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/04 12:13:13 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/04 12:15:43 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ static int		read_tetrimino(const int fd, char *line)
 		}
 		n_line++;
 	}
+	if (total_blocks != SIZE)
+		return (T_ERROR);
 	return (1);
 }
 
