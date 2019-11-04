@@ -19,4 +19,5 @@ OFILE =		$(CFILE:%.c=%.o)
 OBJ =		$(addprefix $(OBJ_DIR), $(OFILE))
 
 all:
-	gcc fillit/main.c fillit/read.c fillit/fillit.h libft/libft.a
+	gcc fillit/main.c fillit/read.c fillit/validators.c \
+	fillit/fillit.h libft/libft.a

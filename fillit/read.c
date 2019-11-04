@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:25:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/04 14:52:29 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/04 14:55:53 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,70 +16,6 @@
 #include "../libft/libft.h"
 #include <fcntl.h>
 #include "../libft/get_next_line.h"
-
-
-static int is_line_length_valid(char *line)
-{
-	if (ft_strlen(line) != SIZE)
-		return (0);
-	return (1);
-}
-
-static int is_char_valid(char c)
-{
-	if (!(c == BLOCK || c == EMPTY))
-		return (0);
-	return (1);
-}
-
-/*
-** Return block count or T_ERROR (-1) if error
-*/
-static int get_blocks_and_validate_line(char *line)
-{
-	int counter;
-
-	if (!is_line_length_valid(line))
-		return (T_ERROR);
-	counter = 0;
-	while (*line)
-	{
-		if (!is_char_valid(*line))
-			return (T_ERROR);
-		if (*line == BLOCK)
-			counter++;
-		line++;
-	}
-	return (counter);
-}
-
-/*
-** Valid tetriminos should have 6 or 8 connections
-*/
-static int is_tetrimino_valid(char *str)
-{
-	int connections;
-
-	connections = 0;
-	while (*str)
-	{
-		if (*str == BLOCK)
-		{
-			if (*(str - SIZE) && *(str - SIZE) == '#')
-				connections++;
-			if (*(str + SIZE) && *(str + SIZE) == '#')
-				connections++;
-			if (*(str - 1) && *(str - 1) == '#')
-				connections++;
-			if (*(str + 1) && *(str + 1) == '#')
-				connections++;
-		}
-		str++;
-	}
-	if (connections == 6 || connections == 8)
-		return (1);
-	return (0);
-}
 
 static int		read_tetrimino(const int fd, char *line)
 {
