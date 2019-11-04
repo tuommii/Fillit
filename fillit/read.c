@@ -6,7 +6,7 @@
 /*   By: mdesta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:25:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/04 10:12:25 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/04 10:24:42 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int		read_one(const int fd, char *line)
 		n_line++;
 	}
 	if (count < 4)
-		retunr(0);
+		return(0);
 	return (1);
 }
 
-int		read(const int fd)
+int		readt(const int fd)
 {
 	char *line;
 

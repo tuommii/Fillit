@@ -6,7 +6,7 @@
 /*   By: mdesta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/04 10:14:50 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/04 10:25:06 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <string.h>
 #include <fcntl.h>
 #include "fillit.h"
+#include "../libft/libft.h"
 
 
 int		main(int argc, char *argv[])
@@ -32,7 +33,7 @@ int		main(int argc, char *argv[])
 		return (0);
 	else if (fd > 0)
 	{
-		read(fd)
+		readt(fd);
 	}
 	close(fd);
 }
