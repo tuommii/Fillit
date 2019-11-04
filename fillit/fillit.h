@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/04 10:58:11 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/04 11:09:37 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <string.h>
 #include <fcntl.h>
 #include <stdlib.h>
+
+
 
 typedef struct		s_tetris
 {
