@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/05 09:58:06 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/05 10:21:37 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,17 @@ void transform(t_list *node)
 
 	tetris = node->content;
 	i = 0;
+	j = 0;
 	while (tetris->shape[i])
 	{
 		if (tetris->shape[i] == BLOCK)
 		{
 			x = i % SIZE;
 			y = i / SIZE;
-			printf("%d, %d\n", x, y);
+			//printf("%d, %d\n", x, y);
+			tetris->arr[j] = x;
+			tetris->arr[j += 1] = y;
+			j++;
 		}
 		i++;
 	}
@@ -46,10 +50,16 @@ void transform(t_list *node)
 void	print_node(t_list *node)
 {
 	t_tetris *tetris;
+	int i;
 
 	tetris = node->content;
-
-	printf("HELLO:%s\n", tetris->shape);
+	i = 0;
+	while (i < 8)
+	{
+		printf("%d", tetris->arr[i]);
+		i++;
+	}
+	printf("\n");
 }
 
 int		main(int argc, char *argv[])
@@ -68,7 +78,7 @@ int		main(int argc, char *argv[])
 		if ((fd = open(argv[1], O_RDONLY)) < 0)
 			return (1);
 	read_file(fd, &list);
-	//ft_lstiter(list, &print_node);
 	ft_lstiter(list, &transform);
+	ft_lstiter(list, &print_node);
 	close(fd);
 }
