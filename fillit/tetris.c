@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:37:23 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/05 11:04:52 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/05 12:33:09 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	normalize_tetrimino(t_list *node)
 	size = 4;
 	x = min_x(tetris->arr);
 	y = min_y(tetris->arr);
-	printf("\nNormalizing factors: x = %d y= %d\n", x, y);
 	i = 0;
 	while (size--)
 	{
@@ -87,7 +86,7 @@ void	normalize_tetrimino(t_list *node)
 		i += 2;
 	}
 	j = 0;
-	printf("Normalized tetrimono coordinates:\n");
+	printf("\n");
 	while (j < 8)
 	{
 		printf("%d", tetris->arr[j]);
