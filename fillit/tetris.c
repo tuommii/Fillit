@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:37:23 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/05 13:21:37 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/05 21:47:04 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,5 @@ void	normalize_tetrimino(t_list *node)
 		printf("%d", tetris->arr[j]);
 		j++;
 	}
-	printf("%c\n", tetris->c);
+	printf(" Char %c\n", tetris->c);
 }
