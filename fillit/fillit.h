@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/04 14:55:41 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/05 09:27:25 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,18 @@
 
 typedef struct		s_tetris
 {
-	void			*shape;
+	char			*shape;
 	char			c;
 	int				x;
 	int				y;
-	struct s_tetris	*next;
 }					t_tetris;
 
-int					read_file(const int fd);
+int					read_file(const int fd, t_list **list);
 
 int					get_blocks_and_validate_line(char *line);
 int 				is_tetrimino_valid(char *str);
+
+t_tetris *create_tetris(char *shape, char c, int x, int y);
 
 # define USAGE "usage:\t./fillit source_file\n"
 # define ERROR_MSG "error\n"

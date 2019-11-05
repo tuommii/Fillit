@@ -10,8 +10,6 @@ SRC_DIR		= 	fillit/
 
 COMP		= 	gcc -Wall -Werror -Wextra $(PRINTF_H) $(LIBFT_H) -c -o
 
-CFILE		= 	main.c
-
 SRC =		$(CFILE:%=$(SRC_DIR)%)
 
 OFILE =		$(CFILE:%.c=%.o)
@@ -20,4 +18,4 @@ OBJ =		$(addprefix $(OBJ_DIR), $(OFILE))
 
 all:
 	gcc fillit/main.c fillit/read.c fillit/validators.c \
-	fillit/fillit.h libft/libft.a
+	fillit/tetris.c fillit/fillit.h libft/libft.a

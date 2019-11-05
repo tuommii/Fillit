@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:25:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/04 14:55:53 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/05 09:31:51 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 #include <fcntl.h>
 #include "../libft/get_next_line.h"
 
-static int		read_tetrimino(const int fd, char *line)
+static int		read_tetrimino(const int fd, char *line, t_list **list)
 {
 	int n_line;
 	int total_blocks;
 	int blocks;
 	char *tetr;
+	t_tetris *tetris;
 
 	n_line = 0;
 	total_blocks = 0;
@@ -42,18 +43,20 @@ static int		read_tetrimino(const int fd, char *line)
 	if (total_blocks != SIZE || !is_tetrimino_valid(tetr))
 		return (T_ERROR);
 	// Now we can pass tetr to some function that stores those
-	printf("%s", tetr);
+	tetris = create_tetris(tetr, 'a', 0, 0);
+	//printf("%s", tetris->shape);
+	ft_lstadd(list, ft_lstnew(tetris, sizeof(tetris)));
 	return (1);
 }
 
-int		read_file(const int fd)
+int		read_file(const int fd, t_list **list)
 {
 	char *line;
 
 	line = NULL;
 	while (1)
 	{
-		if (read_tetrimino(fd, line) == T_ERROR)
+		if (read_tetrimino(fd, line, list) == T_ERROR)
 		{
 			ft_putstr("error\n");
 			exit(1);
