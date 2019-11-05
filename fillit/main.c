@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/05 14:40:17 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/05 15:30:57 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int		main(int argc, char *argv[])
 	int		fd;
 	t_list	*list;
 	t_map	*map;
+	t_tetris *tetris;
 
 	fd = 0;
 	list = NULL;
@@ -82,12 +83,24 @@ int		main(int argc, char *argv[])
 	ft_lstiter(list, &transform);
 	ft_lstiter(list, &print_node);
 	ft_lstiter(list, &normalize_tetrimino);
-
+/*
+	t_tetris *tetris;
+	tetris = create_tetris("#...#...#...#...", 0, 0);
+	tetris.arr[0] = 0;
+	tetris.arr[1] = 0;
+	tetris.arr[2] = 0;
+	tetris.arr[3] = 1;
+	tetris.arr[4] = 0;
+	tetris.arr[5] = 2;
+	tetris.arr[6] = 0;
+	tetris.arr[7] = 3;
+*/
 	map = create_map(8);
 	print_map(map);
-	//char **map = create_map(8);
-	//put_piece(map, 8, &tetris);
-	//print_map(map, 8);
+	tetris = list->content;
+	printf("%s", tetris->shape);
+	put_piece(map, tetris);
+	print_map(map);
 
 	close(fd);
 }
