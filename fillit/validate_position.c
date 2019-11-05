@@ -6,7 +6,7 @@
 /*   By: mdesta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:01:58 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/05 14:35:13 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/05 15:14:54 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,40 +48,38 @@ static	int		x_limit(int *t_coord)
 	return (x);
 }
 
-static	int		another_piece(char **map, int *t_coord)
+static	int		another_piece(t_map *map, t_tetris *tetris)
 {
 	int size;
 	int i;
 
 	i = 0;
-	size = 4;
+	size = map->size;
 	while (size--)
 	{
-		if (map[t_coord[i + 1]][t_coord[i]] != '.')
+		if (map->data[tetris->arr[i + 1]][tetris->arr[i]] != '.')
 			return (0);
 		i += 2;
 	}
 	return (1);
 }
 
-static	int		inside_map(int *t_coord, int size)
+static	int		inside_map(t_map *map, int *t_coord)
 {
 	int x;
 	int y;
 
 	x = x_limit(t_coord);
 	y = y_limit(t_coord);
-	printf("Box Collide: x =  %d y = %d size = %d\n", x, y, size);
-	if (x >= size || y >= size)
+	printf("Box Collide: x =  %d y = %d size = %d\n", x, y, map->size);
+	if (x >= map->size || y >= map->size)
 		return (0);
 	return (1);
 }
 
 //int		conditions(char **map, int *t_coord, int size)
-int		is_location_valid(char **map, t_list *node, int size)
+int		is_location_valid(t_map *map, t_tetris *tetris)
 {
-	t_tetris	*tetris;
 
-	tetris = node->content;
-	return ((inside_map(tetris->arr, size)) && (another_piece(map, tetris->arr)));
+	return ((inside_map(map, tetris->arr)) && (another_piece(map, tetris)));
 }

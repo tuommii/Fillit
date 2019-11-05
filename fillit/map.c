@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 11:28:33 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/05 14:51:48 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/05 15:09:44 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,6 @@ static void	add(int i, int j, int *new)
 	}
 }
 
-static int is_location_valid(t_map *map, t_tetris *tetris)
-{
-	return (1);
-}
 // is_location_valid
 void put_piece(t_map *map, t_tetris *tetris)
 {
@@ -89,9 +85,11 @@ void put_piece(t_map *map, t_tetris *tetris)
 		int j = 0;
 		while (j < map->size)
 		{
+			map->x = j;
+			map->y = i;
 			if(is_location_valid(map, tetris))
 			{
-				add(i, j, tetris->arr);
+				add(map->y, map->x, tetris->arr);
 				while (z < 8)
 				{
 					map->data[tetris->arr[z]][tetris->arr[z+1]] = tetris->c;

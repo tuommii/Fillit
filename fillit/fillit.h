@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/05 14:36:14 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/05 15:09:49 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void put_piece(t_map *map, t_tetris *tetris);
 
 t_tetris *create_tetris(char *shape, int x, int y);
 void	normalize_tetrimino(t_list *node);
-int		is_location_valid(char **map, t_list *node, int size);
+int		is_location_valid(t_map *map, t_tetris *tetris);
 
 # define USAGE "usage:\t./fillit source_file\n"
 # define ERROR_MSG "error\n"
