@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:25:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/05 09:31:51 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/05 12:51:34 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ static int		read_tetrimino(const int fd, char *line, t_list **list)
 	}
 	if (total_blocks != SIZE || !is_tetrimino_valid(tetr))
 		return (T_ERROR);
+	tetris = create_tetris(tetr, n_line + 'a', 0, 0);
 	// Now we can pass tetr to some function that stores those
-	tetris = create_tetris(tetr, 'a', 0, 0);
 	//printf("%s", tetris->shape);
-	ft_lstadd(list, ft_lstnew(tetris, sizeof(tetris)));
+	ft_lstadd(list, ft_lstnew(tetris, sizeof(t_tetris)));
 	return (1);
 }
 
