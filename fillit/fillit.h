@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/05 12:46:14 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/05 14:02:41 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int 				is_tetrimino_valid(char *str);
 
 void				print_map(char **map, int size);
 char 				**create_map(int size);
+void put_piece(char **map, int map_size, t_tetris *tetris);
 
 t_tetris *create_tetris(char *shape, char c, int x, int y);
 void	normalize_tetrimino(t_list *node);
