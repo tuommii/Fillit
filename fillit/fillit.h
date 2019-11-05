@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/05 09:47:42 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/05 10:58:10 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int					get_blocks_and_validate_line(char *line);
 int 				is_tetrimino_valid(char *str);
 
 t_tetris *create_tetris(char *shape, char c, int x, int y);
+void	normalize_tetrimino(t_list *node);
 
 # define USAGE "usage:\t./fillit source_file\n"
 # define ERROR_MSG "error\n"

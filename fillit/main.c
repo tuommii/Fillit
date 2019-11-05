@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/05 10:21:37 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/05 11:04:37 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void transform(t_list *node)
 		{
 			x = i % SIZE;
 			y = i / SIZE;
-			//printf("%d, %d\n", x, y);
+			printf("%d, %d\n", x, y);
 			tetris->arr[j] = x;
 			tetris->arr[j += 1] = y;
 			j++;
@@ -80,5 +80,7 @@ int		main(int argc, char *argv[])
 	read_file(fd, &list);
 	ft_lstiter(list, &transform);
 	ft_lstiter(list, &print_node);
+	ft_lstiter(list, &normalize_tetrimino);
+
 	close(fd);
 }
