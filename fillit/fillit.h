@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/05 09:27:25 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/05 09:47:42 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 typedef struct		s_tetris
 {
 	char			*shape;
+	int				arr[8];
 	char			c;
 	int				x;
 	int				y;
