@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/05 10:58:10 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/05 12:06:49 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ int					read_file(const int fd, t_list **list);
 
 int					get_blocks_and_validate_line(char *line);
 int 				is_tetrimino_valid(char *str);
+
+void				print_map(char **map, int size);
+char 				**create_map(int size);
 
 t_tetris *create_tetris(char *shape, char c, int x, int y);
 void	normalize_tetrimino(t_list *node);

@@ -18,4 +18,4 @@ OBJ =		$(addprefix $(OBJ_DIR), $(OFILE))
 
 all:
 	gcc fillit/main.c fillit/read.c fillit/validators.c \
-	fillit/tetris.c fillit/fillit.h libft/libft.a
+	fillit/tetris.c fillit/map.c fillit/fillit.h libft/libft.a
