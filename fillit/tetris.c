@@ -14,21 +14,18 @@
 #include <stdio.h>
 // rremove stdio header
 
-t_tetris *create_tetris(char *shape, char c, int x, int y)
+t_tetris *create_tetris(char *shape, int x, int y)
 {
 	t_tetris *tetris;
-	static char ch = 'A';
-	if (!c)
-	{
+	static char c = 'A';
 
-	}
 	if (!(tetris = ft_memalloc(sizeof(t_tetris))))
 		return (NULL);
 	tetris->shape = shape;
-	tetris->c = ch;
+	tetris->c = c;
 	tetris->x = x;
 	tetris->y = y;
-	ch++;
+	c++;
 	return (tetris);
 }
 
@@ -97,5 +94,5 @@ void	normalize_tetrimino(t_list *node)
 		printf("%d", tetris->arr[j]);
 		j++;
 	}
-	printf("%c", tetris->c);
+	printf("%c\n", tetris->c);
 }
