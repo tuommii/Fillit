@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 11:28:33 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/05 21:46:57 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/06 06:39:07 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,15 +122,3 @@ int	 put_piece(t_map *map, t_tetris *tetris)
 	printf("X: %d and Y: %d\n", map->x, map->y);
 	return (0);
 }
-
-/*void loop_arr(int x, int y, t_tetris *tetris)
-{
-	int i;
-
-	i = 0:
-	while (i < 8)
-	{
-		tetris->
-	}
-}
-*/

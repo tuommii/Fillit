@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/05 21:47:11 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/06 07:01:47 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include <fcntl.h>
 #include "fillit.h"
 #include "../libft/libft.h"
-
-//.... ..## ..## ...
 
 void transform(t_list *node)
 {
@@ -94,7 +92,7 @@ int		main(int argc, char *argv[])
 	printf("%c\n%s\n", tetris->c, tetris->shape);
 	put_piece(map, tetris);
 	print_map(map);
-	
+
 	list = list->next;
 	tetris = list->content;
 	printf("%c\n%s\n", tetris->c, tetris->shape);
