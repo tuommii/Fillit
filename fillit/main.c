@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 10:47:31 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 11:01:01 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void handle_tetris(t_list *node, t_map *map)
 	tetris = node->content;
 	//printf("MAPSIZE:%d\n", map->size);
 	put_piece(map, tetris);
+	free(tetris);
 }
 
 int		main(int argc, char *argv[])
@@ -85,9 +86,6 @@ int		main(int argc, char *argv[])
 	int			fd;
 	t_list		*list;
 	t_map		*map;
-	t_tetris	*tetris;
-	int			x;
-	int			y;
 
 	fd = 0;
 	list = NULL;
@@ -109,5 +107,8 @@ int		main(int argc, char *argv[])
 	print_map(map);
 	iter_tetrises(list, map, &handle_tetris);
 	print_map(map);
+	free(map);
+	// Maybe we should use ft_lstdel
+	free(list);
 	close(fd);
 }
