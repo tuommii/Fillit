@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 12:21:27 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/06 13:58:02 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,12 @@ void	transform(t_list *node)
 		{
 			x = i % SIZE;
 			y = i / SIZE;
-			printf("%d, %d\n", x, y);
 			tetris->arr[j] = x;
 			tetris->arr[j += 1] = y;
 			j++;
 		}
 		i++;
 	}
-	printf("\n");
 }
 
 void	print_node(t_list *node)
@@ -60,25 +58,22 @@ void	print_node(t_list *node)
 	printf("\n");
 }
 
-void	iter_tetrises(t_list *lst, t_map *map, void (*f)(t_list *elem, t_map *map))
+void  handle_tetris(t_list *node, t_map *map, int size)
 {
-	if (!lst || !f)
-		return ;
-	while (lst != NULL)
+	t_list *head;
+
+	head = node;
+	while (node != NULL)
 	{
-		f(lst, map);
-		lst = lst->next;
+		if (!put_piece(map, node->content))
+		{
+			free(map);
+			map = NULL;
+			map = create_map(size + 1);
+			handle_tetris(head, map, size + 1);
+		}
+		node = node->next;
 	}
-}
-
-void handle_tetris(t_list *node, t_map *map)
-{
-	t_tetris *tetris;
-
-	tetris = node->content;
-	//printf("MAPSIZE:%d\n", map->size);
-	put_piece(map, tetris);
-	free(tetris);
 }
 
 int		main(int argc, char *argv[])
@@ -88,7 +83,7 @@ int		main(int argc, char *argv[])
 	t_map		*map;
 	int			start;
 
-	start = 8;
+	start = 1;
 	fd = 0;
 	list = NULL;
 	if (argc != 2)
@@ -105,12 +100,8 @@ int		main(int argc, char *argv[])
 	ft_lstiter(list, &normalize_tetrimino);
 
 	map = create_map(start);
-	printf("map created\n");
+	handle_tetris(list, map, start);
 	print_map(map);
-	iter_tetrises(list, map, &handle_tetris);
-	print_map(map);
-	free(map);
 	// Maybe we should use ft_lstdel
-	free(list);
 	close(fd);
 }

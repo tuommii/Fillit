@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetris.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:37:23 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/06 12:16:41 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/06 13:14:30 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,4 @@ void		normalize_tetrimino(t_list *node)
 		tetris->arr[i + 1] -= y;
 		i += 2;
 	}
-	// j = 0;
-	// printf("\n");
-	// while (j < 8)
-	// {
-	// 	printf("%d", tetris->arr[j]);
-	// 	j++;
-	// }
-	 printf(" Char %c\n", tetris->c);
 }
