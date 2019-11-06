@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:01:58 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 18:17:56 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 20:41:24 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ static int	x_limit(int *t_coord)
 
 static int	another_piece(t_map *map, t_tetris *tetris)
 {
-	int size;
+//	int size;
 	int i;
 
 	i = 0;
-	size = map->size;
+	//size = map->size;
 	while (i < 8)
 	{
 		if (map->data[tetris->arr[i + 1] + map->x][tetris->arr[i] + map->y] \

@@ -6,9 +6,11 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 18:18:52 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 21:30:48 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+https://github.com/Jemmeh/42-Fillit/blob/master/ProjectFiles/fillitproject/solver.c
 
 #include <unistd.h>
 #include <string.h>
@@ -41,7 +43,7 @@ void	transform(t_list *node)
 	}
 }
 
-t_list	*ft_lstreverse(t_list *list)
+static t_list	*reverse_list(t_list *list)
 {
 	t_list	*curr;
 	t_list	*prev;
@@ -60,23 +62,60 @@ t_list	*ft_lstreverse(t_list *list)
 	return (list);
 }
 
-void	handle_tetris(t_list *node, t_map *map, int size)
+int		place_tetris(t_tetris *tetris, t_map *map, int x, int y)
 {
-	t_list *head;
+	map->x = x;
+	map->y = y;
+	if (!is_location_valid(map, tetris))
+		return (0);
+	add(map, tetris);
+	return (1);
+}
 
-	head = node;
-	while (node != NULL)
+int		solve_map(t_map *map, t_list *list)
+{
+	int x;
+	int y;
+	t_tetris *tetris;
+	if (list == NULL)
+		return (1);
+	y = 0;
+	tetris = (t_tetris *)(list->content);
+	while (y < (map->size))
 	{
-		if (!put_piece(map, node))
+		x = 0;
+		while (x < (map->size))
 		{
-			free(map);
-			map = NULL;
-			map = create_map(size + 1);
-			handle_tetris(head, map, size + 1);
-			//return ;
+			if (place_tetris(tetris, map, x, y))
+			{
+				if (solve_map(map, list->next))
+					return (1);
+				else
+					map->data[x][y] = '.';
+			}
+			x++;
 		}
-		node = node->next;
+		y++;
 	}
+	return (0);
+}
+
+t_map *fillit(t_list *list)
+{
+	t_map *map;
+	int size;
+
+	size = 2;
+	map = create_map(size);
+	while (!solve_map(map, list))
+	{
+		size++;
+		free(map);
+		map = NULL;
+		map = create_map(size);
+		ft_putstr("Increasing map size\n");
+	}
+	return (map);
 }
 
 int		main(int argc, char *argv[])
@@ -84,10 +123,7 @@ int		main(int argc, char *argv[])
 	int			fd;
 	t_list		*list;
 	t_map		*map;
-	int			start;
 
-	start = 2;
-	fd = 0;
 	list = NULL;
 	if (argc != 2)
 	{
@@ -100,9 +136,8 @@ int		main(int argc, char *argv[])
 	read_file(fd, &list);
 	ft_lstiter(list, &transform);
 	ft_lstiter(list, &normalize_tetrimino);
-	list = ft_lstreverse(list);
-	map = create_map(start);
-	handle_tetris(list, map, start);
+	list = reverse_list(list);
+	map = fillit(list);
 	print_map(map);
 	close(fd);
 }
