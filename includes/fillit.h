@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 08:35:32 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 18:07:49 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void				transform(t_list *node);
 void				print_map(t_map *map);
 t_map				*create_map(int size);
 
-int					put_piece(t_map *map, t_tetris *tetris);
+int					put_piece(t_map *map, t_list *node);
 
 t_tetris			*create_tetris(char *shape, int x, int y);
 void				normalize_tetrimino(t_list *node);

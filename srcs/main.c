@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 16:32:52 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/06 18:18:52 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,13 @@ void	handle_tetris(t_list *node, t_map *map, int size)
 	head = node;
 	while (node != NULL)
 	{
-		if (!put_piece(map, node->content))
+		if (!put_piece(map, node))
 		{
 			free(map);
 			map = NULL;
 			map = create_map(size + 1);
 			handle_tetris(head, map, size + 1);
+			//return ;
 		}
 		node = node->next;
 	}
