@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 11:28:33 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/06 10:43:26 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/06 14:18:45 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 t_map		*create_map(int size)
 {
@@ -50,13 +49,13 @@ void		print_map(t_map *map)
 		j = 0;
 		while (j < map->size)
 		{
-			printf("%c", map->data[i][j]);
+			ft_putchar(map->data[i][j]);
 			j++;
 		}
-		printf("\n");
+		ft_putchar('\n');
 		i++;
 	}
-	printf("\n");
+	ft_putchar('\n');
 }
 
 static void	add(t_map *map, t_tetris *tetris)
@@ -90,14 +89,6 @@ int			put_piece(t_map *map, t_tetris *tetris)
 			if (is_location_valid(map, tetris))
 			{
 				add(map, tetris);
-				/*
-				i = 0;
-				while (i < 8)
-				{
-					map->data[tetris->arr[i]][tetris->arr[i + 1]] = tetris->c;
-					i += 2;
-				}
-				*/
 				return (1);
 			}
 		}

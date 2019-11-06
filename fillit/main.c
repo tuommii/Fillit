@@ -3,15 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 14:06:56 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/06 14:17:27 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// For debugging
-#include <stdio.h>
 #include <unistd.h>
 #include <string.h>
 #include <fcntl.h>
@@ -43,22 +41,7 @@ void	transform(t_list *node)
 	}
 }
 
-void	print_node(t_list *node)
-{
-	t_tetris	*tetris;
-	int			i;
-
-	tetris = node->content;
-	i = 0;
-	while (i < 8)
-	{
-		printf("%d", tetris->arr[i]);
-		i++;
-	}
-	printf("\n");
-}
-
-t_list				*ft_lstreverse(t_list *list)
+t_list	*ft_lstreverse(t_list *list)
 {
 	t_list	*curr;
 	t_list	*prev;
@@ -77,7 +60,7 @@ t_list				*ft_lstreverse(t_list *list)
 	return (list);
 }
 
-void  handle_tetris(t_list *node, t_map *map, int size)
+void	handle_tetris(t_list *node, t_map *map, int size)
 {
 	t_list *head;
 
@@ -115,14 +98,10 @@ int		main(int argc, char *argv[])
 			return (1);
 	read_file(fd, &list);
 	ft_lstiter(list, &transform);
-	ft_lstiter(list, &print_node);
 	ft_lstiter(list, &normalize_tetrimino);
-
 	list = ft_lstreverse(list);
-
 	map = create_map(start);
 	handle_tetris(list, map, start);
 	print_map(map);
-	// Maybe we should use ft_lstdel
 	close(fd);
 }

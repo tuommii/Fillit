@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:01:58 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 13:15:13 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 14:14:04 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ static int	another_piece(t_map *map, t_tetris *tetris)
 	size = map->size;
 	while (i < 8)
 	{
-		if (map->data[tetris->arr[i + 1] + map->x][tetris->arr[i] + map->y] != '.')
+		if (map->data[tetris->arr[i + 1] + map->x][tetris->arr[i] + map->y] \
+		!= '.')
 		{
 			return (0);
 		}
@@ -78,7 +79,6 @@ static int	inside_map(t_map *map, int *t_coord)
 	return (1);
 }
 
-//int		conditions(char **map, int *t_coord, int size)
 int			is_location_valid(t_map *map, t_tetris *tetris)
 {
 	return ((inside_map(map, tetris->arr)) && (another_piece(map, tetris)));

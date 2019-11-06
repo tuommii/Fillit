@@ -3,15 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:25:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 10:45:51 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/06 14:12:45 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// For debugging
-#include <stdio.h>
 #include "fillit.h"
 #include "../libft/libft.h"
 #include <fcntl.h>

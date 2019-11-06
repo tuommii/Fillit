@@ -6,13 +6,11 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:37:23 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/06 13:14:30 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 14:15:11 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-// remove stdio header
-#include <stdio.h>
 
 t_tetris	*create_tetris(char *shape, int x, int y)
 {
@@ -74,7 +72,6 @@ void		normalize_tetrimino(t_list *node)
 	int			i;
 	int			size;
 	t_tetris	*tetris;
-//	int			j;
 
 	tetris = node->content;
 	size = 4;
