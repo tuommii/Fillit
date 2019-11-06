@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_position.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesta <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:01:58 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/05 15:14:54 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/06 07:02:26 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,33 @@ static	int		another_piece(t_map *map, t_tetris *tetris)
 {
 	int size;
 	int i;
+	int	j;
 
 	i = 0;
 	size = map->size;
-	while (size--)
+//	printf("Another piece at: %d %d\n", map->x, map->y);
+	j = 0;
+	while (j < 8)
 	{
-		if (map->data[tetris->arr[i + 1]][tetris->arr[i]] != '.')
+		printf("%d", tetris->arr[j]);
+		j++;
+	}
+	printf("\n");
+	print_map(map);
+
+	while (i < 8)
+	{
+		printf("%d %d\n", tetris->arr[i + 1] + map->x, tetris->arr[i] + map->y);
+		if (map->data[tetris->arr[i + 1] + map->x][tetris->arr[i] + map->y] != '.')
+		{
+			printf("no another piece\n");
 			return (0);
+		}
 		i += 2;
 	}
-	return (1);
+
+		return (1);
+
 }
 
 static	int		inside_map(t_map *map, int *t_coord)
@@ -71,7 +88,7 @@ static	int		inside_map(t_map *map, int *t_coord)
 
 	x = x_limit(t_coord);
 	y = y_limit(t_coord);
-	printf("Box Collide: x =  %d y = %d size = %d\n", x, y, map->size);
+//	printf("Box Collide: x =  %d y = %d size = %d\n", x, y, map->size);
 	if (x >= map->size || y >= map->size)
 		return (0);
 	return (1);
