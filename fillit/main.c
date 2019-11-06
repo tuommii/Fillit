@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 13:58:02 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 14:06:56 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,25 @@ void	print_node(t_list *node)
 	printf("\n");
 }
 
+t_list				*ft_lstreverse(t_list *list)
+{
+	t_list	*curr;
+	t_list	*prev;
+	t_list	*next;
+
+	prev = NULL;
+	curr = list;
+	while (curr)
+	{
+		next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
+	}
+	list = prev;
+	return (list);
+}
+
 void  handle_tetris(t_list *node, t_map *map, int size)
 {
 	t_list *head;
@@ -98,6 +117,8 @@ int		main(int argc, char *argv[])
 	ft_lstiter(list, &transform);
 	ft_lstiter(list, &print_node);
 	ft_lstiter(list, &normalize_tetrimino);
+
+	list = ft_lstreverse(list);
 
 	map = create_map(start);
 	handle_tetris(list, map, start);
