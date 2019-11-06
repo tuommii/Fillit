@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 14:17:27 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:32:52 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		main(int argc, char *argv[])
 	t_map		*map;
 	int			start;
 
-	start = 1;
+	start = 2;
 	fd = 0;
 	list = NULL;
 	if (argc != 2)
