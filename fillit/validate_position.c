@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_position.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:01:58 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 09:21:39 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 12:30:46 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,11 @@ static int	inside_map(t_map *map, int *t_coord)
 	int x;
 	int y;
 
-	x = x_limit(t_coord);
-	y = y_limit(t_coord);
-//	printf("Box Collide: x =  %d y = %d size = %d\n", x, y, map->size);
-	if (x >= map->size || y >= map->size)
+	y = x_limit(t_coord);
+	x = y_limit(t_coord);
+	printf("limits: x_limit =  %d y_limit = %d\n", x, y);
+	printf("Map coord: map->x = %d mp->y = %d size = %d\n", map->x, map->y, map->size);
+	if (x >= (map->size - map->x) || y >= (map->size - map->y))
 		return (0);
 	return (1);
 }

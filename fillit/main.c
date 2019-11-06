@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 11:01:01 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 12:21:27 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,9 @@ int		main(int argc, char *argv[])
 	int			fd;
 	t_list		*list;
 	t_map		*map;
+	int			start;
 
+	start = 8;
 	fd = 0;
 	list = NULL;
 	if (argc != 2)
@@ -102,7 +104,7 @@ int		main(int argc, char *argv[])
 	ft_lstiter(list, &print_node);
 	ft_lstiter(list, &normalize_tetrimino);
 
-	map = create_map(8);
+	map = create_map(start);
 	printf("map created\n");
 	print_map(map);
 	iter_tetrises(list, map, &handle_tetris);
