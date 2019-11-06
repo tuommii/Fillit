@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 09:36:29 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 10:38:53 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,14 @@ void	print_node(t_list *node)
 	printf("\n");
 }
 
+
+void	handle_tetris(t_list *node, t_map *map)
+{
+	t_tetris	*tetris;
+	tetris = node->content;
+	put_piece(map, tetris);
+}
+
 int		main(int argc, char *argv[])
 {
 	int			fd;
@@ -86,6 +94,21 @@ int		main(int argc, char *argv[])
 	map = create_map(8);
 	printf("map created\n");
 	print_map(map);
+	tetris = list->content;
+	printf("%c\n%s\n", tetris->c, tetris->shape);
+	put_piece(map, tetris);
+	print_map(map);
+	list = list->next;
+	tetris = list->content;
+	printf("%c\n%s\n", tetris->c, tetris->shape);
+	put_piece(map, tetris);
+	print_map(map);
+	list = list->next;
+	tetris = list->content;
+	printf("%c\n%s\n", tetris->c, tetris->shape);
+	put_piece(map, tetris);
+	print_map(map);
+	list = list->next;
 	tetris = list->content;
 	printf("%c\n%s\n", tetris->c, tetris->shape);
 	put_piece(map, tetris);
