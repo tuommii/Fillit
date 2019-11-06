@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 11:28:33 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/06 14:18:45 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 14:32:04 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ static void	add(t_map *map, t_tetris *tetris)
 
 int			put_piece(t_map *map, t_tetris *tetris)
 {
-	int i;
-
 	map->y = -1;
 	while (map->y++ < map->size)
 	{

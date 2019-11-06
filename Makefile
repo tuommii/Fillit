@@ -1,21 +1,42 @@
-NAME		=	fillit
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/11/06 14:20:34 by mdesta            #+#    #+#              #
+#    Updated: 2019/11/06 14:29:44 by mdesta           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-LIBFT_DIR	= 	libft/
-LIBFT_A		= 	libft.a
-LIBFT_H		= 	-I libft/
-FILLIT_H	= 	-I fillit/
+NAME = fillit
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+INCL = -Iincludes/
+INCL_LIB = ./libft/libft.a
+OBJS = main.o read.o validate_position.o tetris_validators.o \
+	   tetris.o map.o
+SRCS_DIR = srcs/
+FILL_SRCS = main.c read.c validate_position.c tetris_validators.c \
+	   tetris.c map.c
+SRCS = $(addprefix $(SRCS_DIR), $(FILL_SRCS))
+LIB = make -C ./libft/
 
-OBJ_DIR		= 	obj/
-SRC_DIR		= 	fillit/
+all: $(NAME)
 
-COMP		= 	gcc -Wall -Werror -Wextra $(PRINTF_H) $(LIBFT_H) -c -o
+$(NAME):
+		$(LIB)
+		@$(CC) $(CFLAGS) -c $(SRCS) $(INCL)
+		@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(INCL_LIB)
 
-SRC =		$(CFILE:%=$(SRC_DIR)%)
 
-OFILE =		$(CFILE:%.c=%.o)
+clean:
+	rm -rf $(OBJS)
+	make -C libft/ clean
 
-OBJ =		$(addprefix $(OBJ_DIR), $(OFILE))
+fclean: clean
+	rm -rf $(NAME)
+	make -C ./libft/ fclean
 
-all:
-	gcc fillit/main.c fillit/read.c fillit/tetris_validators.c \
-	fillit/tetris.c fillit/validate_position.c fillit/map.c fillit/fillit.h libft/libft.a
+re: fclean all
