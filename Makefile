@@ -6,13 +6,13 @@
 #    By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 14:20:34 by mdesta            #+#    #+#              #
-#    Updated: 2019/11/06 14:29:44 by mdesta           ###   ########.fr        #
+#    Updated: 2019/11/06 16:21:56 by mtuomine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 INCL = -Iincludes/
 INCL_LIB = ./libft/libft.a
 OBJS = main.o read.o validate_position.o tetris_validators.o \

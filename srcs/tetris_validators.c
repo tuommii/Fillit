@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 14:54:21 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/06 08:37:45 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:58:15 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,25 +53,27 @@ int			get_blocks_and_validate_line(char *line)
 ** Valid tetriminos should have 6 or 8 connections
 */
 
+//.....##......##.
 int			is_tetrimino_valid(char *str)
 {
 	int connections;
 
 	connections = 0;
-	while (*str)
+	int i = 0;
+	while (str[i])
 	{
-		if (*str == BLOCK)
+		if (str[i] == BLOCK)
 		{
-			if (*(str - SIZE) && *(str - SIZE) == '#')
+			if ((i - SIZE) >= 0 && str[i - SIZE] == '#')
 				connections++;
-			if (*(str + SIZE) && *(str + SIZE) == '#')
+			if ((i + SIZE) < 16 && str[i + SIZE] == '#')
 				connections++;
-			if (*(str - 1) && *(str - 1) == '#')
+			if ((i + 1) < 16 && str[i + 1] == '#')
 				connections++;
-			if (*(str + 1) && *(str + 1) == '#')
+			if ((i - 1) >= 0 && str[i - 1] == '#')
 				connections++;
 		}
-		str++;
+		i++;
 	}
 	if (connections == 6 || connections == 8)
 		return (1);
