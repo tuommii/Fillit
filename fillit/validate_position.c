@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:01:58 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 08:53:24 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 09:21:39 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static int	another_piece(t_map *map, t_tetris *tetris)
 
 	i = 0;
 	size = map->size;
-//	printf("Another piece at: %d %d\n", map->x, map->y);
 	j = 0;
 	while (j < 8)
 	{

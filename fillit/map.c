@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 11:28:33 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/06 08:52:51 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 09:21:00 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,37 +86,25 @@ static void	add(t_map *map, t_tetris *tetris)
 int			put_piece(t_map *map, t_tetris *tetris)
 {
 	int i;
-	int j;
-	int z;
 
-	i = 0;
-	z = 0;
-	printf("X: %d and Y: %d\n", map->x, map->y);
-	while (i < map->size)
+	map->y = -1;
+	while (map->y++ < map->size)
 	{
-		j = 0;
-		while (j < map->size)
+		map->x = -1;
+		while (map->x++ < map->size)
 		{
-			map->x = j;
-			map->y = i;
-			printf("Point in map X: %d and Y: %d\n", map->x, map->y);
 			if (is_location_valid(map, tetris))
 			{
-				printf("yes\n");
 				add(map, tetris);
-				while (z < 8)
+				i = 0;
+				while (i < 8)
 				{
-					map->data[tetris->arr[z]][tetris->arr[z + 1]] = tetris->c;
-					z += 2;
+					map->data[tetris->arr[i]][tetris->arr[i + 1]] = tetris->c;
+					i += 2;
 				}
 				return (1);
 			}
-			else
-				printf("no\n");
-			j++;
 		}
-		i++;
 	}
-	printf("X: %d and Y: %d\n", map->x, map->y);
 	return (0);
 }
