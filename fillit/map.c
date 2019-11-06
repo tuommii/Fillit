@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 11:28:33 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/06 09:21:00 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 09:31:47 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void		print_map(t_map *map)
 		printf("\n");
 		i++;
 	}
+	printf("\n");
 }
 
 static void	add(t_map *map, t_tetris *tetris)
@@ -67,16 +68,9 @@ static void	add(t_map *map, t_tetris *tetris)
 	k = 0;
 	i = 0;
 	j = 1;
-	print_map(map);
-//	printf("\nAdd at location: %d %d\n", i, j);
-	printf("\nAdd at location map?: %d %d\n", map->x, map->y);
 	while (k < 4)
 	{
-//		printf("k: %d %d %d\n", k, new[k + 1], (new[k + 1] + j));
-//		new[k + 1] = new[k + 1] + j;
 		map->data[map->x + tetris->arr[i]][map->y + tetris->arr[j]] = tetris->c;
-		print_map(map);
-		printf("\n");
 		k++;
 		i += 2;
 		j += 2;
