@@ -6,27 +6,26 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 11:28:33 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/06 08:26:17 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 08:52:51 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
 
-t_map *create_map(int size)
+t_map		*create_map(int size)
 {
 	t_map	*map;
 
 	if (!(map = ft_memalloc(sizeof(t_map))))
 		return (NULL);
-
-	map->size	= size;
-	map->y		= 0;
+	map->size = size;
+	map->y = 0;
 	map->data = malloc(sizeof(char *) * size + 1);
 	map->y = 0;
 	while (map->y < size)
 	{
-		map->x		= 0;
+		map->x = 0;
 		map->data[map->y] = malloc(sizeof(char) * size);
 		while (map->x < size)
 		{
@@ -40,7 +39,7 @@ t_map *create_map(int size)
 	return (map);
 }
 
-void	print_map(t_map *map)
+void		print_map(t_map *map)
 {
 	int i;
 	int j;
@@ -48,7 +47,7 @@ void	print_map(t_map *map)
 	i = 0;
 	while (i < map->size)
 	{
-		int j = 0;
+		j = 0;
 		while (j < map->size)
 		{
 			printf("%c", map->data[i][j]);
@@ -58,7 +57,6 @@ void	print_map(t_map *map)
 		i++;
 	}
 }
-
 
 static void	add(t_map *map, t_tetris *tetris)
 {
@@ -85,12 +83,12 @@ static void	add(t_map *map, t_tetris *tetris)
 	}
 }
 
-// is_location_valid
-int	 put_piece(t_map *map, t_tetris *tetris)
+int			put_piece(t_map *map, t_tetris *tetris)
 {
 	int i;
 	int j;
 	int z;
+
 	i = 0;
 	z = 0;
 	printf("X: %d and Y: %d\n", map->x, map->y);
@@ -102,13 +100,13 @@ int	 put_piece(t_map *map, t_tetris *tetris)
 			map->x = j;
 			map->y = i;
 			printf("Point in map X: %d and Y: %d\n", map->x, map->y);
-			if(is_location_valid(map, tetris))
+			if (is_location_valid(map, tetris))
 			{
 				printf("yes\n");
 				add(map, tetris);
 				while (z < 8)
 				{
-					map->data[tetris->arr[z]][tetris->arr[z+1]] = tetris->c;
+					map->data[tetris->arr[z]][tetris->arr[z + 1]] = tetris->c;
 					z += 2;
 				}
 				return (1);

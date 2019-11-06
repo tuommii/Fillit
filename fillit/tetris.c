@@ -6,17 +6,17 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:37:23 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/06 06:44:27 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 08:49:22 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+// remove stdio header
 #include <stdio.h>
-// rremove stdio header
 
-t_tetris *create_tetris(char *shape, int x, int y)
+t_tetris	*create_tetris(char *shape, int x, int y)
 {
-	t_tetris *tetris;
+	t_tetris	*tetris;
 	static char c = 'A';
 
 	if (!(tetris = ft_memalloc(sizeof(t_tetris))))
@@ -29,7 +29,7 @@ t_tetris *create_tetris(char *shape, int x, int y)
 	return (tetris);
 }
 
-static	int		min_x(int *tab)
+static int	min_x(int *tab)
 {
 	int x;
 	int i;
@@ -48,7 +48,7 @@ static	int		min_x(int *tab)
 	return (x);
 }
 
-static	int		min_y(int *tab)
+static	int	min_y(int *tab)
 {
 	int y;
 	int i;
@@ -66,15 +66,15 @@ static	int		min_y(int *tab)
 	}
 	return (y);
 }
-void	normalize_tetrimino(t_list *node)
-{
-	int x;
-	int y;
-	int i;
-	int size;
-	int	j;
-	t_tetris	*tetris;
 
+void		normalize_tetrimino(t_list *node)
+{
+	int			x;
+	int			y;
+	int			i;
+	int			size;
+	t_tetris	*tetris;
+//	int			j;
 
 	tetris = node->content;
 	size = 4;
@@ -87,12 +87,12 @@ void	normalize_tetrimino(t_list *node)
 		tetris->arr[i + 1] -= y;
 		i += 2;
 	}
-	j = 0;
-	printf("\n");
-	while (j < 8)
-	{
-		printf("%d", tetris->arr[j]);
-		j++;
-	}
-	printf(" Char %c\n", tetris->c);
+	// j = 0;
+	// printf("\n");
+	// while (j < 8)
+	// {
+	// 	printf("%d", tetris->arr[j]);
+	// 	j++;
+	// }
+	// printf(" Char %c\n", tetris->c);
 }

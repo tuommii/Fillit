@@ -6,13 +6,13 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:01:58 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 07:02:26 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 08:53:24 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static	int		y_limit(int *t_coord)
+static int	y_limit(int *t_coord)
 {
 	int size;
 	int i;
@@ -30,7 +30,7 @@ static	int		y_limit(int *t_coord)
 	return (y);
 }
 
-static	int		x_limit(int *t_coord)
+static int	x_limit(int *t_coord)
 {
 	int size;
 	int i;
@@ -48,7 +48,7 @@ static	int		x_limit(int *t_coord)
 	return (x);
 }
 
-static	int		another_piece(t_map *map, t_tetris *tetris)
+static int	another_piece(t_map *map, t_tetris *tetris)
 {
 	int size;
 	int i;
@@ -65,7 +65,6 @@ static	int		another_piece(t_map *map, t_tetris *tetris)
 	}
 	printf("\n");
 	print_map(map);
-
 	while (i < 8)
 	{
 		printf("%d %d\n", tetris->arr[i + 1] + map->x, tetris->arr[i] + map->y);
@@ -76,12 +75,10 @@ static	int		another_piece(t_map *map, t_tetris *tetris)
 		}
 		i += 2;
 	}
-
-		return (1);
-
+	return (1);
 }
 
-static	int		inside_map(t_map *map, int *t_coord)
+static int	inside_map(t_map *map, int *t_coord)
 {
 	int x;
 	int y;
@@ -95,8 +92,7 @@ static	int		inside_map(t_map *map, int *t_coord)
 }
 
 //int		conditions(char **map, int *t_coord, int size)
-int		is_location_valid(t_map *map, t_tetris *tetris)
+int			is_location_valid(t_map *map, t_tetris *tetris)
 {
-
 	return ((inside_map(map, tetris->arr)) && (another_piece(map, tetris)));
 }

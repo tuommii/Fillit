@@ -6,21 +6,21 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 14:54:21 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/06 06:42:10 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 08:37:45 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "../libft/libft.h"
 
-static int is_line_length_valid(char *line)
+static int	is_line_length_valid(char *line)
 {
 	if (ft_strlen(line) != SIZE)
 		return (0);
 	return (1);
 }
 
-static int is_char_valid(char c)
+static int	is_char_valid(char c)
 {
 	if (!(c == BLOCK || c == EMPTY))
 		return (0);
@@ -30,7 +30,8 @@ static int is_char_valid(char c)
 /*
 ** Return block count or T_ERROR (-1) if error
 */
-int get_blocks_and_validate_line(char *line)
+
+int			get_blocks_and_validate_line(char *line)
 {
 	int counter;
 
@@ -51,7 +52,8 @@ int get_blocks_and_validate_line(char *line)
 /*
 ** Valid tetriminos should have 6 or 8 connections
 */
-int is_tetrimino_valid(char *str)
+
+int			is_tetrimino_valid(char *str)
 {
 	int connections;
 

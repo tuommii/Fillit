@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 06:43:15 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 08:35:32 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 
 typedef struct		s_map
 {
-	int 			x;
-	int 			y;
-	int 			size;
+	int				x;
+	int				y;
+	int				size;
 	char			**data;
 }					t_map;
 
@@ -44,7 +44,7 @@ typedef struct		s_tetris
 int					read_file(const int fd, t_list **list);
 
 int					get_blocks_and_validate_line(char *line);
-int 				is_tetrimino_valid(char *str);
+int					is_tetrimino_valid(char *str);
 
 void				transform(t_list *node);
 
