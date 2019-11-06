@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-https://github.com/Jemmeh/42-Fillit/blob/master/ProjectFiles/fillitproject/solver.c
+//https://github.com/Jemmeh/42-Fillit/blob/master/ProjectFiles/fillitproject/solver.c
 
 #include <unistd.h>
 #include <string.h>
