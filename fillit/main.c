@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 09:36:29 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/06 10:45:05 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,26 @@ void	print_node(t_list *node)
 	printf("\n");
 }
 
+void	iter_tetrises(t_list *lst, t_map *map, void (*f)(t_list *elem, t_map *map))
+{
+	if (!lst || !f)
+		return ;
+	while (lst != NULL)
+	{
+		f(lst, map);
+		lst = lst->next;
+	}
+}
+
+void handle_tetris(t_list *node, t_map *map)
+{
+	t_tetris *tetris;
+
+	tetris = node->content;
+	//printf("MAPSIZE:%d\n", map->size);
+	put_piece(map, tetris);
+}
+
 int		main(int argc, char *argv[])
 {
 	int			fd;
@@ -83,17 +103,11 @@ int		main(int argc, char *argv[])
 	ft_lstiter(list, &transform);
 	ft_lstiter(list, &print_node);
 	ft_lstiter(list, &normalize_tetrimino);
+
 	map = create_map(8);
 	printf("map created\n");
 	print_map(map);
-	tetris = list->content;
-	printf("%c\n%s\n", tetris->c, tetris->shape);
-	put_piece(map, tetris);
-	print_map(map);
-	list = list->next;
-	tetris = list->content;
-	printf("%c\n%s\n", tetris->c, tetris->shape);
-	put_piece(map, tetris);
+	iter_tetrises(list, map, &handle_tetris);
 	print_map(map);
 	close(fd);
 }
