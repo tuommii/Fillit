@@ -6,13 +6,10 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 16:14:50 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 16:17:51 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <string.h>
-#include <fcntl.h>
 #include "fillit.h"
 
 static t_list		*reverse_list(t_list *list)

@@ -6,12 +6,11 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:25:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 16:15:23 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 16:16:57 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <fcntl.h>
 
 static int	read_tetrimino(const int fd, char *line, t_list **list)
 {
