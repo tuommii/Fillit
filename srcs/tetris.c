@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetris.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:37:23 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/07 13:31:35 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 14:00:22 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static	int	min_y(int *tab)
 	return (y);
 }
 
-void	transform(t_list *node)
+void		transform(t_list *node)
 {
 	t_tetris	*tetris;
 	int			i;

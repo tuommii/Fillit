@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 13:29:57 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 14:03:25 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//https://github.com/Jemmeh/42-Fillit/blob/master/ProjectFiles/fillitproject/solver.c
 
 #include <unistd.h>
 #include <string.h>
@@ -18,8 +16,7 @@
 #include "fillit.h"
 #include "../libft/libft.h"
 
-
-static t_list	*reverse_list(t_list *list)
+static t_list		*reverse_list(t_list *list)
 {
 	t_list	*curr;
 	t_list	*prev;
@@ -38,7 +35,7 @@ static t_list	*reverse_list(t_list *list)
 	return (list);
 }
 
-int		solve_map(t_map *map, t_list *list)
+int					solve_map(t_map *map, t_list *list)
 {
 	t_tetris *tetris;
 
@@ -67,18 +64,16 @@ int		solve_map(t_map *map, t_list *list)
 	return (0);
 }
 
-t_map *fillit(t_list *list)
+t_map				*fillit(t_list *list)
 {
-	t_map *map;
-	int size;
+	t_map	*map;
+	int		size;
 
-	// Calc this
 	size = 2;
 	map = create_map(size);
 	while (!solve_map(map, list))
 	{
 		size++;
-		// See right way to free this
 		free(map);
 		map = NULL;
 		map = create_map(size);
@@ -86,7 +81,7 @@ t_map *fillit(t_list *list)
 	return (map);
 }
 
-int		main(int argc, char *argv[])
+int					main(int argc, char *argv[])
 {
 	int			fd;
 	t_list		*list;

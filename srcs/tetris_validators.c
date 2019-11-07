@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetris_validators.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 14:54:21 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/06 16:58:15 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 14:02:29 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ static int	is_char_valid(char c)
 	return (1);
 }
 
-/*
-** Return block count or T_ERROR (-1) if error
-*/
-
 int			get_blocks_and_validate_line(char *line)
 {
 	int counter;
@@ -49,17 +45,13 @@ int			get_blocks_and_validate_line(char *line)
 	return (counter);
 }
 
-/*
-** Valid tetriminos should have 6 or 8 connections
-*/
-
-//.....##......##.
 int			is_tetrimino_valid(char *str)
 {
 	int connections;
+	int	i;
 
 	connections = 0;
-	int i = 0;
+	i = 0;
 	while (str[i])
 	{
 		if (str[i] == BLOCK)

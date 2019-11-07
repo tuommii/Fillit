@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 13:30:31 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 13:52:28 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,14 @@ typedef struct		s_tetris
 int					read_file(const int fd, t_list **list);
 int					get_blocks_and_validate_line(char *line);
 int					is_tetrimino_valid(char *str);
-
 t_tetris			*create_tetris(char *shape, int x, int y);
 void				normalize_tetrimino(t_list *node);
 void				transform(t_list *node);
-
 void				print_map(t_map *map);
 t_map				*create_map(int size);
 void				place_tetris(t_tetris *tetris, t_map *map, char c);
-
-
-int		in_bounds_y(t_tetris *tetris, int map_size);
-int		in_bounds_x(t_tetris *tetris, int map_size);
-int		is_overlapping(t_map *map, t_tetris *piece);
+int					in_bounds_y(t_tetris *tetris, int map_size);
+int					in_bounds_x(t_tetris *tetris, int map_size);
+int					is_overlapping(t_map *map, t_tetris *piece);
 
 #endif
