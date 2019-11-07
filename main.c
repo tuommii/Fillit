@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 14:14:44 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/07 14:52:19 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_map				*fillit(t_list *list)
 	while (!solve_map(map, list))
 	{
 		size++;
-		free(map);
+		free_map(map);
 		map = NULL;
 		map = create_map(size);
 	}
@@ -103,6 +103,7 @@ int					main(int argc, char *argv[])
 	list = reverse_list(list);
 	map = fillit(list);
 	print_map(map);
+	free_map(map);
 	close(fd);
 
 	int i = 0;

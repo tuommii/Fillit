@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 13:52:28 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/07 14:51:21 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void				normalize_tetrimino(t_list *node);
 void				transform(t_list *node);
 void				print_map(t_map *map);
 t_map				*create_map(int size);
+void				free_map(t_map *map);
 void				place_tetris(t_tetris *tetris, t_map *map, char c);
 int					in_bounds_y(t_tetris *tetris, int map_size);
 int					in_bounds_x(t_tetris *tetris, int map_size);
