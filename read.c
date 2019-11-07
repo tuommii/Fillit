@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:25:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 16:16:57 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 16:36:20 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static int	read_tetrimino(const int fd, char *line, t_list **list)
 			ft_memdel((void **)&tetr);
 			tetr = temp;
 		}
+		ft_memdel((void **)&line);
 	}
 	if (total_blocks != SIZE || !is_tetrimino_valid(tetr))
 		return (T_ERROR);
@@ -54,15 +55,16 @@ int			read_file(const int fd, t_list **list)
 	{
 		if (read_tetrimino(fd, line, list) == T_ERROR)
 		{
+			ft_memdel((void **)&line);
 			ft_putstr("error\n");
-			exit(1);
+			return (T_ERROR);
 		}
 		if (!get_next_line(fd, &line))
 		{
-			free(line);
+			//ft_memdel((void **)&line);
 			break ;
 		}
-		free(line);
+		ft_memdel((void **)&line);
 	}
 	close(fd);
 	return (1);

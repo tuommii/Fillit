@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 16:17:51 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 16:32:23 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,15 @@ int					main(int argc, char *argv[])
 	if (argc == 2)
 		if ((fd = open(argv[1], O_RDONLY)) < 0)
 			return (1);
-	read_file(fd, &list);
+	if (read_file(fd, &list) == T_ERROR)
+	{
+		ft_lstdel(&list, (void *)free_tetris);
+		while (1)
+		{
+
+		}
+		return (1);
+	}
 	ft_lstiter(list, &transform);
 	ft_lstiter(list, &normalize_tetrimino);
 	list = reverse_list(list);
