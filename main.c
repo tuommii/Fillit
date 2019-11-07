@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 16:44:41 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 16:53:26 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ t_map				*fillit(t_list *list)
 	return (map);
 }
 
-void				free_tetris(t_tetris *tetris)
+static void				free_tetris(t_tetris *tetris)
 {
 	ft_memdel((void **)&tetris->shape);
 	ft_memdel((void **)&tetris);
 }
 
-void clean_memory(t_list *list, t_map *map)
+static void clean_memory(t_list *list, t_map *map)
 {
 	if (list)
 		ft_lstdel(&list, (void *)free_tetris);
