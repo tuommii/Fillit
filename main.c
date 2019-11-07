@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 16:32:23 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 16:44:41 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,21 @@ void				free_tetris(t_tetris *tetris)
 	ft_memdel((void **)&tetris);
 }
 
+void clean_memory(t_list *list, t_map *map)
+{
+	if (list)
+		ft_lstdel(&list, (void *)free_tetris);
+	if (map)
+		free_map(map);
+}
+
 int					main(int argc, char *argv[])
 {
 	int			fd;
 	t_list		*list;
 	t_map		*map;
 
+	map = NULL;
 	list = NULL;
 	fd = 0;
 	if (argc != 2)
@@ -100,7 +109,7 @@ int					main(int argc, char *argv[])
 			return (1);
 	if (read_file(fd, &list) == T_ERROR)
 	{
-		ft_lstdel(&list, (void *)free_tetris);
+		clean_memory(list, map);
 		while (1)
 		{
 
@@ -112,9 +121,7 @@ int					main(int argc, char *argv[])
 	list = reverse_list(list);
 	map = fillit(list);
 	print_map(map);
-	ft_lstdel(&list, (void *)free_tetris);
-	free(list);
-	free_map(map);
+	clean_memory(list, map);
 	close(fd);
 
 	while (1)
