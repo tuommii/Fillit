@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 21:30:48 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 12:38:06 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,40 +62,56 @@ static t_list	*reverse_list(t_list *list)
 	return (list);
 }
 
-int		place_tetris(t_tetris *tetris, t_map *map, int x, int y)
+int		place_tetris(t_tetris *tetris, t_map *map)
 {
-	map->x = x;
-	map->y = y;
-	if (!is_location_valid(map, tetris))
-		return (0);
 	add(map, tetris);
 	return (1);
 }
 
-int		solve_map(t_map *map, t_list *list)
+void	place(t_tetris *piece, t_map *map, char letter)
 {
+	int i;
 	int x;
 	int y;
+
+	i = 0;
+	x = 0;
+	y = 0;
+	while (i <= 6)
+	{
+		x = piece->arr[i] + piece->x;
+		y = piece->arr[i + 1] + piece->y;
+		map->data[y][x] = letter;
+		i += 2;
+	}
+}
+
+int		solve_map(t_map *map, t_list *list)
+{
 	t_tetris *tetris;
+
 	if (list == NULL)
 		return (1);
-	y = 0;
 	tetris = (t_tetris *)(list->content);
-	while (y < (map->size))
+	tetris->y = 0;
+	tetris->x = 0;
+	while (in_bounds(tetris, map->size, 'y'))
 	{
-		x = 0;
-		while (x < (map->size))
+		while (in_bounds(tetris, map->size, 'x'))
 		{
-			if (place_tetris(tetris, map, x, y))
+			if (!overlap(map, tetris))
 			{
+				place(tetris, map, tetris->c);
 				if (solve_map(map, list->next))
 					return (1);
 				else
-					map->data[x][y] = '.';
+					place(tetris, map, '.');
+					//map->data[tetris->y][tetris->x] = 0;
 			}
-			x++;
+			tetris->x++;
 		}
-		y++;
+		tetris->x = 0;
+		tetris->y++;
 	}
 	return (0);
 }
@@ -113,7 +129,6 @@ t_map *fillit(t_list *list)
 		free(map);
 		map = NULL;
 		map = create_map(size);
-		ft_putstr("Increasing map size\n");
 	}
 	return (map);
 }
@@ -125,6 +140,7 @@ int		main(int argc, char *argv[])
 	t_map		*map;
 
 	list = NULL;
+	fd = 0;
 	if (argc != 2)
 	{
 		ft_putstr(USAGE);

@@ -6,80 +6,50 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:01:58 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 20:41:24 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 12:22:50 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int	y_limit(int *t_coord)
+int		overlap(t_map *map, t_tetris *piece)
 {
-	int size;
 	int i;
-	int y;
-
-	i = 1;
-	size = 3;
-	y = t_coord[i];
-	while (size--)
-	{
-		i += 2;
-		if (y < t_coord[i])
-			y = t_coord[i];
-	}
-	return (y);
-}
-
-static int	x_limit(int *t_coord)
-{
-	int size;
-	int i;
-	int x;
-
-	i = 0;
-	size = 3;
-	x = t_coord[i];
-	while (size--)
-	{
-		i += 2;
-		if (x < t_coord[i])
-			x = t_coord[i];
-	}
-	return (x);
-}
-
-static int	another_piece(t_map *map, t_tetris *tetris)
-{
-//	int size;
-	int i;
-
-	i = 0;
-	//size = map->size;
-	while (i < 8)
-	{
-		if (map->data[tetris->arr[i + 1] + map->x][tetris->arr[i] + map->y] \
-		!= '.')
-		{
-			return (0);
-		}
-		i += 2;
-	}
-	return (1);
-}
-
-static int	inside_map(t_map *map, int *t_coord)
-{
 	int x;
 	int y;
 
-	y = x_limit(t_coord);
-	x = y_limit(t_coord);
-	if (x >= (map->size - map->x) || y >= (map->size - map->y))
-		return (0);
-	return (1);
+	i = 0;
+	x = 0;
+	y = 0;
+	x = piece->arr[i] + piece->x;
+	y = piece->arr[i + 1] + piece->y;
+	while (i <= 6 && map->data[y][x] == '.')
+	{
+		i += 2;
+		x = piece->arr[i] + piece->x;
+		y = piece->arr[i + 1] + piece->y;
+	}
+	return (i != 8);
 }
+
+
+int		in_bounds(t_tetris *tetris, int map_size, char axis)
+{
+	if (axis == 'y')
+		return (tetris->arr[1] + tetris->y < map_size &&
+				tetris->arr[3] + tetris->y < map_size &&
+				tetris->arr[5] + tetris->y < map_size &&
+				tetris->arr[7] + tetris->y < map_size);
+	else
+		return (tetris->arr[0] + tetris->x < map_size &&
+				tetris->arr[2] + tetris->x < map_size &&
+				tetris->arr[4] + tetris->x < map_size &&
+				tetris->arr[6] + tetris->x < map_size);
+}
+
 
 int			is_location_valid(t_map *map, t_tetris *tetris)
 {
-	return ((inside_map(map, tetris->arr)) && (another_piece(map, tetris)));
+	return ((in_bounds(tetris, map->size, 'y')) && (in_bounds(tetris, map->size, 'x') &&
+	(!overlap(map, tetris))));
 }

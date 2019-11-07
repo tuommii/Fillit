@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 11:28:33 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/06 20:33:18 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 12:33:39 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,16 @@ void	add(t_map *map, t_tetris *tetris)
 	j = 1;
 	while (k < 4)
 	{
-		map->data[map->x + tetris->arr[j]][map->y + tetris->arr[i]] = tetris->c;
+		map->data[tetris->x][tetris->y] = tetris->c;
 		k++;
 		i += 2;
 		j += 2;
 	}
+}
+
+void	clear(t_map *map, t_tetris *tetris)
+{
+	map->data[tetris->x][tetris->y] = '.';
 }
 
 int			put_piece(t_map *map, t_list *node)
