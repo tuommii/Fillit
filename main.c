@@ -6,7 +6,7 @@
 /*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 14:03:25 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/07 14:14:44 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,10 @@ int					main(int argc, char *argv[])
 	map = fillit(list);
 	print_map(map);
 	close(fd);
+
+	int i = 0;
+	while (1)
+		i++;
+
+	return (0);
 }
