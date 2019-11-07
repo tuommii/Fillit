@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 11:28:33 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/07 16:07:37 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 17:58:37 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,33 @@ void		free_map(t_map *map)
 	}
 	ft_memdel((void **)&map->data);
 	ft_memdel((void **)&map);
+}
+
+int			solve_map(t_map *map, t_list *list)
+{
+	t_tetris *tetris;
+
+	if (list == NULL)
+		return (1);
+	tetris = (t_tetris *)(list->content);
+	tetris->y = 0;
+	tetris->x = 0;
+	while (in_bounds_y(tetris, map->size))
+	{
+		tetris->x = 0;
+		while (in_bounds_x(tetris, map->size))
+		{
+			if (!is_overlapping(map, tetris))
+			{
+				place_tetris(tetris, map, tetris->c);
+				if (solve_map(map, list->next))
+					return (1);
+				else
+					place_tetris(tetris, map, '.');
+			}
+			tetris->x++;
+		}
+		tetris->y++;
+	}
+	return (0);
 }

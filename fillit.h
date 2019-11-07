@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 16:19:19 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 17:58:43 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void				normalize_tetrimino(t_list *node);
 void				transform(t_list *node);
 void				print_map(t_map *map);
 t_map				*create_map(int size);
+int					solve_map(t_map *map, t_list *list);
 void				free_map(t_map *map);
 void				place_tetris(t_tetris *tetris, t_map *map, char c);
 int					in_bounds_y(t_tetris *tetris, int map_size);

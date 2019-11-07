@@ -6,59 +6,11 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 16:53:26 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 18:11:14 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-static t_list		*reverse_list(t_list *list)
-{
-	t_list	*curr;
-	t_list	*prev;
-	t_list	*next;
-
-	prev = NULL;
-	curr = list;
-	while (curr)
-	{
-		next = curr->next;
-		curr->next = prev;
-		prev = curr;
-		curr = next;
-	}
-	list = prev;
-	return (list);
-}
-
-int					solve_map(t_map *map, t_list *list)
-{
-	t_tetris *tetris;
-
-	if (list == NULL)
-		return (1);
-	tetris = (t_tetris *)(list->content);
-	tetris->y = 0;
-	tetris->x = 0;
-	while (in_bounds_y(tetris, map->size))
-	{
-		tetris->x = 0;
-		while (in_bounds_x(tetris, map->size))
-		{
-			if (!is_overlapping(map, tetris))
-			{
-				place_tetris(tetris, map, tetris->c);
-				if (solve_map(map, list->next))
-					return (1);
-				else
-					place_tetris(tetris, map, '.');
-			}
-			tetris->x++;
-		}
-		tetris->y++;
-	}
-	return (0);
-}
 
 t_map				*fillit(t_list *list)
 {
@@ -76,18 +28,31 @@ t_map				*fillit(t_list *list)
 	return (map);
 }
 
-static void				free_tetris(t_tetris *tetris)
+static void			free_tetris(t_tetris *tetris)
 {
 	ft_memdel((void **)&tetris->shape);
 	ft_memdel((void **)&tetris);
 }
 
-static void clean_memory(t_list *list, t_map *map)
+static void			clean_memory(t_list *list, t_map *map)
 {
 	if (list)
 		ft_lstdel(&list, (void *)free_tetris);
 	if (map)
 		free_map(map);
+}
+
+static int			check_args(int argc, char **argv, int *fd)
+{
+	if (argc != 2)
+	{
+		ft_putstr(USAGE);
+		return (1);
+	}
+	if (argc == 2)
+		if ((*fd = open(argv[1], O_RDONLY)) < 0)
+			return (1);
+	return (0);
 }
 
 int					main(int argc, char *argv[])
@@ -99,21 +64,11 @@ int					main(int argc, char *argv[])
 	map = NULL;
 	list = NULL;
 	fd = 0;
-	if (argc != 2)
-	{
-		ft_putstr(USAGE);
+	if (check_args(argc, argv, &fd))
 		return (1);
-	}
-	if (argc == 2)
-		if ((fd = open(argv[1], O_RDONLY)) < 0)
-			return (1);
 	if (read_file(fd, &list) == T_ERROR)
 	{
 		clean_memory(list, map);
-		while (1)
-		{
-
-		}
 		return (1);
 	}
 	ft_lstiter(list, &transform);
@@ -123,11 +78,5 @@ int					main(int argc, char *argv[])
 	print_map(map);
 	clean_memory(list, map);
 	close(fd);
-
-	while (1)
-	{
-
-	}
-
 	return (0);
 }
