@@ -6,21 +6,19 @@
 #    By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 14:20:34 by mdesta            #+#    #+#              #
-#    Updated: 2019/11/07 13:50:46 by mdesta           ###   ########.fr        #
+#    Updated: 2019/11/07 14:48:23 by mdesta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 CC = gcc
-CFLAGS = -g -Wall -Wextra -Werror
-INCL = -Iincludes/
+CFLAGS = -Wall -Wextra -Werror
+INCL = -I fillit.h
 INCL_LIB = ./libft/libft.a
 OBJS = main.o read.o map_validators.o tetris_validators.o \
 	   tetris.o map.o
-SRCS_DIR = srcs/
-FILL_SRCS = main.c read.c map_validators.c tetris_validators.c \
+SRCS = main.c read.c map_validators.c tetris_validators.c \
 	   tetris.c map.c
-SRCS = $(addprefix $(SRCS_DIR), $(FILL_SRCS))
 LIB = make -C ./libft/
 
 all: $(NAME)
