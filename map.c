@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 11:28:33 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/07 17:58:37 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 18:38:22 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void		print_map(t_map *map)
 		ft_putchar('\n');
 		i++;
 	}
-	ft_putchar('\n');
 }
 
 void		free_map(t_map *map)
