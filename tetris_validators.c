@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   tetris_validators.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 14:54:21 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/07 14:02:29 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/07 14:56:16 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "../libft/libft.h"
 
 static int	is_line_length_valid(char *line)
 {

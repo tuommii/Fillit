@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 14:52:19 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 16:14:50 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <string.h>
 #include <fcntl.h>
 #include "fillit.h"
-#include "../libft/libft.h"
 
 static t_list		*reverse_list(t_list *list)
 {
@@ -75,10 +74,15 @@ t_map				*fillit(t_list *list)
 	{
 		size++;
 		free_map(map);
-		map = NULL;
 		map = create_map(size);
 	}
 	return (map);
+}
+
+void				free_tetris(t_tetris *tetris)
+{
+	ft_memdel((void **)&tetris->shape);
+	ft_memdel((void **)&tetris);
 }
 
 int					main(int argc, char *argv[])
@@ -103,12 +107,15 @@ int					main(int argc, char *argv[])
 	list = reverse_list(list);
 	map = fillit(list);
 	print_map(map);
+	ft_lstdel(&list, (void *)free_tetris);
+	free(list);
 	free_map(map);
 	close(fd);
 
-	int i = 0;
 	while (1)
-		i++;
+	{
+
+	}
 
 	return (0);
 }

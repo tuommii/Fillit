@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 11:28:33 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/07 14:49:14 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 16:07:37 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ void		free_map(t_map *map)
 	i = 0;
 	while (i < map->size)
 	{
-		ft_memdel(map->data[i]);
+		ft_memdel((void **)&map->data[i]);
 		i++;
 	}
-	ft_memdel(map->data);
-	ft_memdel(&map);
+	ft_memdel((void **)&map->data);
+	ft_memdel((void **)&map);
 }
