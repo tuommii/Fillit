@@ -6,7 +6,7 @@
 /*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 14:14:44 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/07 14:49:36 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <string.h>
 #include <fcntl.h>
 #include "fillit.h"
-#include "../libft/libft.h"
+#include "libft/libft.h"
 
 static t_list		*reverse_list(t_list *list)
 {

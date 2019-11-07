@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:25:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/06 14:12:45 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 14:50:23 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "../libft/libft.h"
+#include "libft/libft.h"
 #include <fcntl.h>
-#include "../libft/get_next_line.h"
+#include "libft/get_next_line.h"
 
 static int	read_tetrimino(const int fd, char *line, t_list **list)
 {

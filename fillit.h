@@ -6,14 +6,14 @@
 /*   By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 13:52:28 by mdesta           ###   ########.fr       */
+/*   Updated: 2019/11/07 14:49:07 by mdesta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include "../libft/libft.h"
+# include "libft/libft.h"
 # include <unistd.h>
 # include <string.h>
 # include <fcntl.h>
