@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+         #
+#    By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 14:20:34 by mdesta            #+#    #+#              #
-#    Updated: 2019/11/06 16:21:56 by mtuomine         ###   ########.fr        #
+#    Updated: 2019/11/07 13:14:09 by mtuomine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,10 @@ CC = gcc
 CFLAGS = -g -Wall -Wextra -Werror
 INCL = -Iincludes/
 INCL_LIB = ./libft/libft.a
-OBJS = main.o read.o validate_position.o tetris_validators.o \
+OBJS = main.o read.o map_validators.o tetris_validators.o \
 	   tetris.o map.o
 SRCS_DIR = srcs/
-FILL_SRCS = main.c read.c validate_position.c tetris_validators.c \
+FILL_SRCS = main.c read.c map_validators.c tetris_validators.c \
 	   tetris.c map.c
 SRCS = $(addprefix $(SRCS_DIR), $(FILL_SRCS))
 LIB = make -C ./libft/

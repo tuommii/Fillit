@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 11:28:33 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/07 12:33:39 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 13:30:17 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,24 @@ t_map		*create_map(int size)
 	return (map);
 }
 
+void		place_tetris(t_tetris *tetris, t_map *map, char c)
+{
+	int i;
+	int x;
+	int y;
+
+	i = 0;
+	x = 0;
+	y = 0;
+	while (i <= 6)
+	{
+		x = tetris->arr[i] + tetris->x;
+		y = tetris->arr[i + 1] + tetris->y;
+		map->data[y][x] = c;
+		i += 2;
+	}
+}
+
 void		print_map(t_map *map)
 {
 	int i;
@@ -56,45 +74,4 @@ void		print_map(t_map *map)
 		i++;
 	}
 	ft_putchar('\n');
-}
-
-void	add(t_map *map, t_tetris *tetris)
-{
-	int	i;
-	int	j;
-	int k;
-
-	k = 0;
-	i = 0;
-	j = 1;
-	while (k < 4)
-	{
-		map->data[tetris->x][tetris->y] = tetris->c;
-		k++;
-		i += 2;
-		j += 2;
-	}
-}
-
-void	clear(t_map *map, t_tetris *tetris)
-{
-	map->data[tetris->x][tetris->y] = '.';
-}
-
-int			put_piece(t_map *map, t_list *node)
-{
-	map->y = -1;
-	while (map->y++ < map->size)
-	{
-		map->x = -1;
-		while (map->x++ < map->size)
-		{
-			if (is_location_valid(map, node->content))
-			{
-				add(map, node->content);
-				return (1);
-			}
-		}
-	}
-	return (0);
 }

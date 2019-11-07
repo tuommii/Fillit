@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:37:23 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/06 14:15:11 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 13:31:35 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,31 @@ static	int	min_y(int *tab)
 		i += 2;
 	}
 	return (y);
+}
+
+void	transform(t_list *node)
+{
+	t_tetris	*tetris;
+	int			i;
+	int			j;
+	int			x;
+	int			y;
+
+	tetris = node->content;
+	i = 0;
+	j = 0;
+	while (tetris->shape[i])
+	{
+		if (tetris->shape[i] == BLOCK)
+		{
+			x = i % SIZE;
+			y = i / SIZE;
+			tetris->arr[j] = x;
+			tetris->arr[j += 1] = y;
+			j++;
+		}
+		i++;
+	}
 }
 
 void		normalize_tetrimino(t_list *node)

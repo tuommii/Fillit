@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 12:25:13 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/07 13:30:31 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define EMPTY '.'
 # define SIZE 4
 # define T_ERROR -1
+# define USAGE "usage:\t./fillit source_file\n"
+# define ERROR_MSG "error\n"
 
 typedef struct		s_map
 {
@@ -42,27 +44,20 @@ typedef struct		s_tetris
 }					t_tetris;
 
 int					read_file(const int fd, t_list **list);
-
 int					get_blocks_and_validate_line(char *line);
 int					is_tetrimino_valid(char *str);
 
+t_tetris			*create_tetris(char *shape, int x, int y);
+void				normalize_tetrimino(t_list *node);
 void				transform(t_list *node);
 
 void				print_map(t_map *map);
 t_map				*create_map(int size);
+void				place_tetris(t_tetris *tetris, t_map *map, char c);
 
-int					put_piece(t_map *map, t_list *node);
 
-t_tetris			*create_tetris(char *shape, int x, int y);
-void				normalize_tetrimino(t_list *node);
-int					is_location_valid(t_map *map, t_tetris *tetris);
-
-void	clear(t_map *map, t_tetris *tetris);
-void	add(t_map *map, t_tetris *tetris);
-int		in_bounds(t_tetris *tetris, int map_size, char axis);
-int		overlap(t_map *map, t_tetris *piece);
-
-# define USAGE "usage:\t./fillit source_file\n"
-# define ERROR_MSG "error\n"
+int		in_bounds_y(t_tetris *tetris, int map_size);
+int		in_bounds_x(t_tetris *tetris, int map_size);
+int		is_overlapping(t_map *map, t_tetris *piece);
 
 #endif
