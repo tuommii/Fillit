@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdesta <mdesta@student.hive.fi>            +#+  +:+       +#+         #
+#    By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 14:20:34 by mdesta            #+#    #+#              #
-#    Updated: 2019/11/07 14:48:23 by mdesta           ###   ########.fr        #
+#    Updated: 2019/11/08 05:59:35 by mtuomine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-INCL = -I fillit.h
+INCL = -I .
 INCL_LIB = ./libft/libft.a
 OBJS = main.o read.o map_validators.o tetris_validators.o \
 	   tetris.o map.o
