@@ -6,15 +6,15 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 10:42:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/07 17:58:43 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/08 09:29:10 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include "libft/libft.h"
-# include "libft/get_next_line.h"
+# include "libft/includes/libft.h"
+# include "libft/includes/get_next_line.h"
 # include <unistd.h>
 # include <string.h>
 # include <fcntl.h>

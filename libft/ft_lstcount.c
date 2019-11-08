@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstreverse.c                                    :+:      :+:    :+:   */
+/*   ft_lstcount.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/08 05:48:49 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/08 05:49:42 by mtuomine         ###   ########.fr       */
+/*   Created: 2019/11/08 09:20:52 by mtuomine          #+#    #+#             */
+/*   Updated: 2019/11/08 09:22:22 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstreverse(t_list *list)
+size_t ft_lstcount(t_list *list)
 {
-	t_list	*curr;
-	t_list	*prev;
-	t_list	*next;
+	size_t i;
 
-	prev = NULL;
-	curr = list;
-	while (curr)
+	i = 0;
+	while (list != NULL)
 	{
-		next = curr->next;
-		curr->next = prev;
-		prev = curr;
-		curr = next;
+		list = list->next;
+		i++;
 	}
-	list = prev;
-	return (list);
+	return (i);
 }
