@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/08 09:04:49 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/08 09:39:20 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,12 @@ t_map				*fillit(t_list *list)
 {
 	t_map	*map;
 	int		size;
+	int		n;
 
 	size = 2;
+	n = ft_lstcount(list) * 4;
+	while (size * size < n)
+		size++;
 	map = create_map(size);
 	while (!solve_map(map, list))
 	{

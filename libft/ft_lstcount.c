@@ -6,13 +6,13 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 09:20:52 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/08 09:22:22 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/08 09:40:11 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_lstcount(t_list *list)
+size_t	ft_lstcount(t_list *list)
 {
 	size_t i;
 
