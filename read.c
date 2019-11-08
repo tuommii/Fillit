@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:25:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/08 06:39:26 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/08 06:42:42 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ static int	handle_tetris(t_tetris *tetris, char *tetr, \
 t_list **list, int blocks)
 {
 	if (blocks != SIZE || !is_tetrimino_valid(tetr))
+	{
+		ft_memdel((void **)&tetris);
+		ft_memdel((void **)&tetr);
 		return (T_ERROR);
+	}
 	tetris = create_tetris(tetr, 0, 0);
 	ft_lstadd(list, ft_lstnew(tetris, sizeof(t_tetris)));
 	ft_memdel((void **)&tetris);
