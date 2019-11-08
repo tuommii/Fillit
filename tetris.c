@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 08:37:23 by mtuomine          #+#    #+#             */
-/*   Updated: 2019/11/07 15:59:04 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/08 12:58:35 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ t_tetris	*create_tetris(char *shape, int x, int y)
 	t_tetris	*tetris;
 	static char c = 'A';
 
+	if (c > 'Z')
+	{
+		ft_putstr(ERROR_MSG);
+		exit(1);
+	}
 	if (!(tetris = ft_memalloc(sizeof(t_tetris))))
 		return (NULL);
 	tetris->shape = shape;
