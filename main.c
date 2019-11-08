@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:20:41 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/08 05:59:03 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/08 06:21:58 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,5 @@ int					main(int argc, char *argv[])
 	map = fillit(list);
 	print_map(map);
 	clean_memory(list, map);
-	close(fd);
 	return (0);
 }
