@@ -6,7 +6,7 @@
 /*   By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 09:25:55 by mdesta            #+#    #+#             */
-/*   Updated: 2019/11/08 06:18:08 by mtuomine         ###   ########.fr       */
+/*   Updated: 2019/11/08 06:39:26 by mtuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,12 @@ int			read_file(const int fd, t_list **list)
 			return (T_ERROR);
 		}
 		if (!get_next_line(fd, &line))
+		{
+			ft_memdel((void **)&line);
 			break ;
+		}
+		ft_memdel((void **)&line);
 	}
-	ft_memdel((void **)&line);
 	close(fd);
 	return (1);
 }
