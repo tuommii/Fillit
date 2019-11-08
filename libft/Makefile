@@ -6,7 +6,7 @@
 #    By: mtuomine <mtuomine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/15 12:40:34 by mtuomine          #+#    #+#              #
-#    Updated: 2019/11/08 05:55:30 by mtuomine         ###   ########.fr        #
+#    Updated: 2019/11/08 05:57:31 by mtuomine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ ft_lstiter.c \
 ft_lstmap.c \
 ft_strrev.c \
 ft_strlen_char.c \
-ft_lastreverse.c \
+ft_lstreverse.c \
 get_next_line.c
 
 OBJECTS	= $(SOURCE_LIST:.c=.o)
